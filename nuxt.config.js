@@ -13,7 +13,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -75,5 +83,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://openexchangerates.org/api',
+    appId: process.env.APP_ID || '0fd90e4b7e9b459db409f8506aa39566'
   }
 }
