@@ -8,16 +8,9 @@
       <v-divider></v-divider>
       <v-card-text class="text-xs-center">
         <v-container grid-list-md>
-          <v-layout wrap>
-            <v-flex xs12>
-              <v-progress-circular
-                indeterminate
-                :size="70"
-                :width="7"
-                color="purple"
-              ></v-progress-circular>
-            </v-flex>
-          </v-layout>
+          <div class="text-center">
+            <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
+          </div>
         </v-container>
       </v-card-text>
     </v-card>
@@ -30,7 +23,7 @@ export default {
   computed: {
     dialog: {
       get() {
-          return this.$store.state.progress;
+        return this.$store.state.progress;
       }
     },
   },

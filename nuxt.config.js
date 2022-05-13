@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import path from 'path'
+import fs from 'fs'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -85,7 +87,7 @@ export default {
   build: {
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://openexchangerates.org/api',
+    baseUrl: process.env.BASE_URL || 'https://openexchangerates.org/api/',
     appId: process.env.APP_ID || '0fd90e4b7e9b459db409f8506aa39566'
-  }
+  },
 }

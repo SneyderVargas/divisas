@@ -1,12 +1,11 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="500px">
     <!--<v-btn color="primary" dark slot="activator">Open Dialog</v-btn>!-->
-    <v-card>
-      <v-toolbar card :color="type" dark dense >
-        <v-toolbar-title class="body-2">
-            Mensaje 
-        </v-toolbar-title>
-      </v-toolbar>
+    <v-card :color="type" dark dense>
+      <v-card-title class="text-h5">
+        Mensaje
+      </v-card-title>
+      <v-divider></v-divider>
       <v-card-text class="text-xs-center">
         <v-container grid-list-md>
           <v-layout wrap>

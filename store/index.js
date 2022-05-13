@@ -4,7 +4,13 @@ export const state = () => ({
     active: false,
     color: '',
     text: ''
-  }
+  },
+  progress: false,
+  modalAlert: {
+    active: false,
+    type: 'default',
+    data: null
+  },
 
 })
 

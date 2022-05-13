@@ -1,13 +1,7 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-show="$vuetify.breakpoint.mobile"
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-show="$vuetify.breakpoint.mobile" v-model="drawer" :mini-variant="miniVariant"
+      :clipped="clipped" fixed app>
       <v-list>
         <v-list-item>
           <v-list-item-content>
@@ -20,13 +14,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -36,53 +24,32 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      v-show="$vuetify.breakpoint.mobile"
-      :clipped-left="clipped"
-      fixed
-      app
-    >
+    <v-app-bar v-show="$vuetify.breakpoint.mobile" :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-progress-linear
-        :active="loading"
-        :indeterminate="loading"
-        absolute
-        bottom
-        color="deep-purple accent-4"
-      ></v-progress-linear>
+      <v-progress-linear :active="loading" :indeterminate="loading" absolute bottom color="deep-purple accent-4">
+      </v-progress-linear>
     </v-app-bar>
-    <v-app-bar
-      v-show="!$vuetify.breakpoint.mobile"
-      :clipped-left="clipped"
-      fixed
-      app
-      justify="space-around"
-    >
+    <v-app-bar v-show="!$vuetify.breakpoint.mobile" :clipped-left="clipped" fixed app justify="space-around">
       <v-toolbar-title>Divisas</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn
-        v-for="(item, i) in items"
-        :key="i"
-        :to="item.to"
-        class="ma-4"
-        :color="item.color"
-        outlined
-        >{{ item.title }}</v-btn
-      >
-      <v-progress-linear
-        :active="loading"
-        :indeterminate="loading"
-        absolute
-        bottom
-        color="deep-purple accent-4"
-      ></v-progress-linear>
+      <v-btn v-for="(item, i) in items" :key="i" :to="item.to" class="ma-4" :color="item.color" outlined>{{ item.title
+      }}</v-btn>
+      <v-progress-linear :active="loading" :indeterminate="loading" absolute bottom color="deep-purple accent-4">
+      </v-progress-linear>
     </v-app-bar>
+    <ModalAlert />
+    <ModalProgress />
   </div>
 </template>
-
 <script>
+import ModalAlert from "@/components/ModalAlert";
+import ModalProgress from "@/components/ModalProgress";
 export default {
+  components: {
+    ModalAlert,
+    ModalProgress
+  },
   name: 'WebDrawer',
   data() {
     return {
