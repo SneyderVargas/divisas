@@ -1,5 +1,6 @@
 <template>
     <v-form ref="form" v-model="valid" lazy-validation>
+        {{ update }}
         <v-text-field type="number" v-model="monto" :counter="10" :rules="montoRules" label="* Monto" required>
         </v-text-field>
         <SelectCoint :title="'* Moneda origen'" v-on:select="this.origin" :items="this.coint" />
@@ -7,12 +8,15 @@
         <v-btn :disabled="!valid" color="success" class="mr-4" @click="convertir" block>
             Convertir
         </v-btn>
-        <div v-if="this.viewResult">
-            <v-alert border="right" color="blue-grey" dark>
+        <v-divider></v-divider>
+        <v-card v-if="this.viewResult">
+            <v-card-text>
+                <v-alert border="right" color="blue-grey" dark>
                 <FormatMoney :value="this.mountConverted" :sourceRate="this.sourceRate" :targetRate="this.targetRate"
                     :monto="this.monto" />
             </v-alert>
-        </div>
+            </v-card-text>
+        </v-card>
     </v-form>
 </template>
 <script>
@@ -77,7 +81,6 @@ export default {
                     console.log();
                     this.itemsValueCoint = response.data.rates
                     this.$store.commit("progress", false);
-                    console.log(this.itemsValueCoint);
                 })
                 .catch((e) => {
                     let payload = {
@@ -117,6 +120,12 @@ export default {
         this.nameCoint()
         this.valueCoint()
     },
+    computed: {
+        update() {
+            this.monto
+            this.viewResult = false;
+        }
+    }
 }
 </script>
 

@@ -5,17 +5,17 @@
                 <h3>Aplicación de Divisas</h3>
             </div>
         </v-card-title>
-        <v-tabs v-model="tab" background-color="light-blue lighten-1" centered icons-and-text>
+        <v-tabs v-model="tab" background-color="light-blue darken-4" centered icons-and-text>
             <v-tabs-slider></v-tabs-slider>
 
             <v-tab href="#tab-1">
                 Conversion
-                <v-icon>balance</v-icon>
+                <v-icon :color="'white'">balance</v-icon>
             </v-tab>
 
             <v-tab href="#tab-2">
                 Historial
-                <v-icon>history_toggle_off</v-icon>
+                <v-icon :color="'white'">history_toggle_off</v-icon>
             </v-tab>
         </v-tabs>
 
@@ -29,7 +29,9 @@
             </v-tab-item>
             <v-tab-item :value="'tab-' + 2">
                 <v-card flat>
-                    <v-card-text>dos</v-card-text>
+                    <v-card-text>
+                        <History />
+                    </v-card-text>
                 </v-card>
             </v-tab-item>
         </v-tabs-items>
@@ -38,14 +40,15 @@
 
 <script>
 import Convert from "@/components/convert-currency/forms/Convert";
+import History from "@/components/convert-currency/dashboards/History";
 export default {
-    components: { Convert },
+    components: { Convert, History },
     data() {
         return {
             tab: null
         }
     },
-    
+
 }
 </script>
 
